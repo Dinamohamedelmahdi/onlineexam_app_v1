@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 
 class ErrorStateWidget extends StatelessWidget {
-  Exception? exception;
+  String? exception;
   String? retryButtonText;
   VoidCallback? retryButtonAction;
 
@@ -21,7 +21,7 @@ class ErrorStateWidget extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          Text(extractErrorMessage()),
+          Text("$exception"),
           retryButtonText != null ? ElevatedButton(onPressed: retryButtonAction,
               child: Text(retryButtonText ?? ""))
               : const Text('')
@@ -30,22 +30,6 @@ class ErrorStateWidget extends StatelessWidget {
     );
   }
 
-  String extractErrorMessage() {
-    switch (exception) {
-      case TimeoutException() :
-        {
-          return "No internet Connection";
-        }
-      case SocketException() :
-        {
-          return "Please Check internet Connection";
-        }
 
-      default:
-        {
-          return "Something Went Wrong";
-        }
-    }
-  }
 
 }

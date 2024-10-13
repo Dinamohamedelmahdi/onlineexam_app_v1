@@ -12,13 +12,16 @@ class Fail<T> extends Result<T>{
   Exception? exception;
   Fail(this.exception);
 }
-
+class ServerError implements Exception{
+  String? serverMessage;
+  ServerError(this.serverMessage);
+}
 class NoInternetConnection implements Exception{
   String? statusMsg;
   NoInternetConnection(this.statusMsg);
 }
 class DioHttpException implements Exception{
   DioException? exception;
-  DioHttpException(this.exception);
+ DioHttpException(this.exception);
 }
 
